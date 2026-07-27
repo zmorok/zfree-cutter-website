@@ -33,8 +33,11 @@ test("server-renders the ZFree Cutter landing page", async () => {
   const html = await response.text();
   assert.match(html, /<title>ZFree Cutter — media editor for Android<\/title>/i);
   assert.match(html, /Обрежь лишнее/);
-  assert.match(html, /Живой мини‑редактор/);
-  assert.match(html, /Твои файлы остаются твоими/);
+  assert.match(html, /Один редактор для видео, фото и GIF/);
+  assert.match(html, /Так выглядит ZFree Cutter/);
+  assert.match(html, /Проверить исходный код/);
+  assert.match(html, /Сообщить о проблеме/);
+  assert.doesNotMatch(html, /Живой мини‑редактор|Сделано для реальной работы|Твои файлы остаются твоими/);
   assert.match(html, /github\.com\/zmorok\/zfree-cutter/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });

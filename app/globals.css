@@ -543,7 +543,7 @@ button {
 }
 
 .intro {
-  padding-block: 150px 70px;
+  padding-block: 130px 110px;
 }
 
 .section-heading {
@@ -1498,7 +1498,7 @@ button {
 }
 
 .gallery-section {
-  padding-block: 140px;
+  padding-block: 120px;
   background:
     radial-gradient(circle at 65% 40%, rgba(128, 73, 160, 0.18), transparent 35rem),
     #110b16;
@@ -1563,7 +1563,7 @@ button {
 
 .gallery-nav button {
   display: grid;
-  grid-template-columns: 42px 1fr auto;
+  grid-template-columns: 42px 1fr;
   gap: 18px;
   align-items: center;
   min-height: 78px;
@@ -1758,6 +1758,28 @@ button {
   margin: 18px 0 0;
   color: rgba(31, 14, 36, 0.66);
   font-size: 12px;
+  line-height: 1.55;
+}
+
+.final-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.final-links a {
+  border-bottom: 1px solid rgba(31, 14, 36, 0.32);
+  padding-bottom: 3px;
+  color: rgba(31, 14, 36, 0.76);
+  font-size: 12px;
+  font-weight: 650;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.final-links a:hover {
+  border-color: #211227;
+  color: #211227;
 }
 
 .final-mark {
