@@ -4,7 +4,7 @@ const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const repositoryBasePath = "/zfree-cutter-website";
 
 const nextConfig: NextConfig = {
-  output: isGitHubPages ? "export" : undefined,
+  output: "export",
   basePath: isGitHubPages ? repositoryBasePath : "",
   assetPrefix: isGitHubPages ? repositoryBasePath : "",
   images: {
