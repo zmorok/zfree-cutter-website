@@ -9,6 +9,8 @@ test("exports the ZFree Cutter landing page", async () => {
   assert.match(html, /Обрежь лишнее/);
   assert.match(html, /Один редактор для видео, фото и GIF/);
   assert.match(html, /Так выглядит ZFree Cutter/);
+  assert.match(html, /Скачать v0\.3\.8/);
+  assert.match(html, /Онлайн-медиа/);
   assert.match(html, /Проверить исходный код/);
   assert.match(html, /Сообщить о проблеме/);
   assert.match(html, /github\.com\/zmorok\/zfree-cutter/);

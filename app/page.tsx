@@ -22,7 +22,7 @@ const copy = {
       titleA: "Обрежь лишнее.",
       titleB: "Оставь момент.",
       text: "Открой видео, фото или GIF, внеси нужные правки и сохрани результат. Всё происходит прямо на телефоне — понятно и без лишних шагов.",
-      download: "Скачать v0.3.0",
+      download: "Скачать v0.3.8",
       source: "Открыть код",
       note: "Бесплатно · Open source · без подписки",
       local: "Обработка на устройстве",
@@ -32,14 +32,14 @@ const copy = {
     intro: {
       kicker: "Всё в одном месте",
       title: "Один редактор для видео, фото и GIF.",
-      text: "Выбери файл и сразу переходи к работе. Основные инструменты находятся под рукой, а сохранённый проект можно открыть снова в любой момент.",
+      text: "Выбери файл на устройстве или найди медиа с открытой лицензией в онлайн-каталоге. Инструменты находятся под рукой, а сохранённый проект можно открыть снова в любой момент.",
     },
     media: {
       video: {
         label: "Видео",
         title: "Всё нужное для короткого монтажа",
         text: "Обрежь фрагмент, измени скорость, добавь эффект, текст, изображение или звук. Все изменения собраны на одном таймлайне.",
-        points: ["MP4 / H.264 / AAC", "Точная обрезка", "Отмена и повтор действий"],
+        points: ["MP4 / H.264 / AAC", "Cyberpunk Glitch", "Полотно до 4096 × 4096"],
       },
       photo: {
         label: "Фото",
@@ -57,11 +57,11 @@ const copy = {
     gallery: {
       kicker: "Интерфейс",
       title: "Так выглядит ZFree Cutter.",
-      text: "Это реальные экраны версии 0.3.0. Выбери раздел, чтобы рассмотреть приложение до установки.",
-      names: ["Главная", "Медиатека", "Редактор", "Эффекты", "Экспорт", "Настройки"],
+      text: "Это реальные экраны версии 0.3.8 с Pixel 8. Выбери раздел, чтобы рассмотреть приложение до установки.",
+      names: ["Главная", "Медиатека", "Онлайн-медиа", "Редактор", "Эффекты", "Экспорт", "Настройки"],
     },
     final: {
-      eyebrow: "Версия 0.3.0 · Android 10+",
+      eyebrow: "Версия 0.3.8 · Android 10+",
       title: "Медиа уже на телефоне. Редактор тоже может быть там.",
       download: "Скачать APK",
       changelog: "Что нового",
@@ -86,7 +86,7 @@ const copy = {
       titleA: "Cut the noise.",
       titleB: "Keep the moment.",
       text: "Open a video, photo, or GIF, make the changes you need, and save the result. Everything happens right on your phone, without unnecessary steps.",
-      download: "Download v0.3.0",
+      download: "Download v0.3.8",
       source: "View source",
       note: "Free · Open source · no subscription",
       local: "On-device processing",
@@ -96,14 +96,14 @@ const copy = {
     intro: {
       kicker: "Everything in one place",
       title: "One editor for video, photos, and GIFs.",
-      text: "Choose a file and start editing. The essential tools stay close at hand, and saved projects can be reopened whenever you need them.",
+      text: "Choose a file on your device or find openly licensed media in the online catalog. Essential tools stay close at hand, and saved projects can be reopened whenever you need them.",
     },
     media: {
       video: {
         label: "Video",
         title: "Everything you need for a quick edit",
         text: "Trim a clip, change its speed, and add effects, text, images, or audio. Every change lives on one timeline.",
-        points: ["MP4 / H.264 / AAC", "Precise trimming", "Undo and redo"],
+        points: ["MP4 / H.264 / AAC", "Cyberpunk Glitch", "Canvas up to 4096 × 4096"],
       },
       photo: {
         label: "Photo",
@@ -121,11 +121,11 @@ const copy = {
     gallery: {
       kicker: "Interface",
       title: "This is ZFree Cutter.",
-      text: "These are real screens from version 0.3.0. Choose a section to explore the app before installing it.",
-      names: ["Home", "Library", "Editor", "Effects", "Export", "Settings"],
+      text: "These are real version 0.3.8 screens captured on a Pixel 8. Choose a section to explore the app before installing it.",
+      names: ["Home", "Library", "Online media", "Editor", "Effects", "Export", "Settings"],
     },
     final: {
-      eyebrow: "Version 0.3.0 · Android 10+",
+      eyebrow: "Version 0.3.8 · Android 10+",
       title: "Your media lives on your phone. Your editor can too.",
       download: "Download APK",
       changelog: "What’s new",
@@ -140,7 +140,7 @@ const copy = {
   },
 } as const;
 
-const screenshotFiles = ["home", "library", "editor", "effects", "export", "settings"] as const;
+const screenshotFiles = ["home", "library", "catalog", "editor", "effects", "export", "settings"] as const;
 
 function asset(path: string) {
   return `${BASE_PATH}${path}`;
@@ -365,7 +365,7 @@ export default function Home() {
             <p className="final-note">{t.final.note}</p>
             <div className="final-links">
               <a href={`${REPOSITORY_URL}/issues`} target="_blank" rel="noreferrer">{t.final.issues}</a>
-              <a href={`${REPOSITORY_URL}/releases/tag/v0.3.0`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
+              <a href={`${REPOSITORY_URL}/releases/tag/v0.3.8`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
             </div>
           </div>
           <div className="final-mark" aria-hidden="true">
