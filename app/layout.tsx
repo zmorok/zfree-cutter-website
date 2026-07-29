@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "ZFree Cutter — Cut the noise. Keep the moment.",
-    description: "Version 0.3.8 of the open-source media editor for Android.",
+    description: "Version 0.4.0 of the open-source media editor for Android.",
     url: siteUrl,
     siteName: "ZFree Cutter",
     locale: "en_US",
@@ -53,8 +53,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#110a18",
-  colorScheme: "dark",
+  themeColor: [
+    {
+      media: "(prefers-color-scheme: light)",
+      color: "#fbf8fc",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: "#110a18",
+    },
+  ],
+  colorScheme: "dark light",
   width: "device-width",
   initialScale: 1,
 };

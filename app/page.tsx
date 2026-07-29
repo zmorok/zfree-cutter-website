@@ -4,6 +4,7 @@ import { PointerEvent, useEffect, useMemo, useRef, useState } from "react";
 
 type Locale = "ru" | "en";
 type MediaKind = "video" | "photo" | "gif";
+type Theme = "dark" | "light";
 
 const REPOSITORY_URL = "https://github.com/zmorok/zfree-cutter";
 const RELEASE_URL = `${REPOSITORY_URL}/releases/latest`;
@@ -16,13 +17,15 @@ const copy = {
       gallery: "Интерфейс",
       download: "Скачать",
       github: "GitHub",
+      lightTheme: "Включить светлую тему",
+      darkTheme: "Включить тёмную тему",
     },
     hero: {
       eyebrow: "Свободный редактор для Android 10+",
       titleA: "Обрежь лишнее.",
       titleB: "Оставь момент.",
       text: "Открой видео, фото или GIF, внеси нужные правки и сохрани результат. Всё происходит прямо на телефоне — понятно и без лишних шагов.",
-      download: "Скачать v0.3.8",
+      download: "Скачать v0.4.0",
       source: "Открыть код",
       note: "Бесплатно · Open source · без подписки",
       local: "Обработка на устройстве",
@@ -57,11 +60,11 @@ const copy = {
     gallery: {
       kicker: "Интерфейс",
       title: "Так выглядит ZFree Cutter.",
-      text: "Это реальные экраны версии 0.3.8 с Pixel 8. Выбери раздел, чтобы рассмотреть приложение до установки.",
+      text: "Это реальные экраны ZFree Cutter с Pixel 8. Выбери раздел, чтобы рассмотреть приложение до установки.",
       names: ["Главная", "Медиатека", "Онлайн-медиа", "Редактор", "Эффекты", "Экспорт", "Настройки"],
     },
     final: {
-      eyebrow: "Версия 0.3.8 · Android 10+",
+      eyebrow: "Версия 0.4.0 · Android 10+",
       title: "Медиа уже на телефоне. Редактор тоже может быть там.",
       download: "Скачать APK",
       changelog: "Что нового",
@@ -80,13 +83,15 @@ const copy = {
       gallery: "Interface",
       download: "Download",
       github: "GitHub",
+      lightTheme: "Switch to light theme",
+      darkTheme: "Switch to dark theme",
     },
     hero: {
       eyebrow: "Open-source editor for Android 10+",
       titleA: "Cut the noise.",
       titleB: "Keep the moment.",
       text: "Open a video, photo, or GIF, make the changes you need, and save the result. Everything happens right on your phone, without unnecessary steps.",
-      download: "Download v0.3.8",
+      download: "Download v0.4.0",
       source: "View source",
       note: "Free · Open source · no subscription",
       local: "On-device processing",
@@ -121,11 +126,11 @@ const copy = {
     gallery: {
       kicker: "Interface",
       title: "This is ZFree Cutter.",
-      text: "These are real version 0.3.8 screens captured on a Pixel 8. Choose a section to explore the app before installing it.",
+      text: "These are real ZFree Cutter screens captured on a Pixel 8. Choose a section to explore the app before installing it.",
       names: ["Home", "Library", "Online media", "Editor", "Effects", "Export", "Settings"],
     },
     final: {
-      eyebrow: "Version 0.3.8 · Android 10+",
+      eyebrow: "Version 0.4.0 · Android 10+",
       title: "Your media lives on your phone. Your editor can too.",
       download: "Download APK",
       changelog: "What’s new",
@@ -148,6 +153,7 @@ function asset(path: string) {
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("ru");
+  const [theme, setTheme] = useState<Theme>("dark");
   const [media, setMedia] = useState<MediaKind>("video");
   const [shot, setShot] = useState(2);
   const heroVisual = useRef<HTMLDivElement>(null);
@@ -158,6 +164,21 @@ export default function Home() {
     () => asset(`/screenshots/${locale}/${screenshotFiles[shot]}.png`),
     [locale, shot],
   );
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem("zfree-theme");
+    const initialTheme: Theme =
+      storedTheme === "light" || storedTheme === "dark"
+        ? storedTheme
+        : window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark";
+    const frame = window.requestAnimationFrame(() => {
+      setTheme(initialTheme);
+      document.documentElement.dataset.theme = initialTheme;
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -193,6 +214,13 @@ export default function Home() {
     heroVisual.current?.style.setProperty("--tilt-y", "0deg");
   }
 
+  function toggleTheme() {
+    const nextTheme: Theme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    window.localStorage.setItem("zfree-theme", nextTheme);
+  }
+
   return (
     <main>
       <header className="site-header">
@@ -205,6 +233,15 @@ export default function Home() {
           <a href="#gallery">{t.nav.gallery}</a>
         </nav>
         <div className="header-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? t.nav.lightTheme : t.nav.darkTheme}
+            title={theme === "dark" ? t.nav.lightTheme : t.nav.darkTheme}
+          >
+            <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+          </button>
           <button
             className="language-toggle"
             type="button"
@@ -365,7 +402,7 @@ export default function Home() {
             <p className="final-note">{t.final.note}</p>
             <div className="final-links">
               <a href={`${REPOSITORY_URL}/issues`} target="_blank" rel="noreferrer">{t.final.issues}</a>
-              <a href={`${REPOSITORY_URL}/releases/tag/v0.3.8`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
+              <a href={`${REPOSITORY_URL}/releases/tag/v0.4.0`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
             </div>
           </div>
           <div className="final-mark" aria-hidden="true">

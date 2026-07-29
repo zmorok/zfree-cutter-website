@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;
   --ink: #f8f5fb;
   --muted: #aaa2b0;
   --paper: #0d0812;
@@ -17,6 +18,22 @@
   --radius-xl: 42px;
   --radius-lg: 28px;
   --radius-md: 20px;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #211726;
+  --muted: #6c6170;
+  --paper: #fbf8fc;
+  --paper-soft: #f4eef7;
+  --panel: #ffffff;
+  --panel-light: #eee5f3;
+  --line: rgba(55, 31, 65, 0.14);
+  --lavender: #70418d;
+  --lavender-strong: #8d50b2;
+  --lime: #617d09;
+  --peach: #bd5732;
+  --blue: #376dc8;
 }
 
 * {
@@ -39,6 +56,9 @@ body {
   color: var(--ink);
   font-family: var(--font-geist-sans), Arial, sans-serif;
   text-rendering: optimizeLegibility;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease;
 }
 
 button,
@@ -139,6 +159,31 @@ button {
   cursor: pointer;
 }
 
+.theme-toggle {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--lavender);
+  cursor: pointer;
+  font-size: 19px;
+  line-height: 1;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: rgba(215, 185, 255, 0.34);
+  background: rgba(255, 255, 255, 0.08);
+  transform: rotate(8deg);
+}
+
 .language-toggle span {
   display: grid;
   min-width: 32px;
@@ -171,6 +216,102 @@ button {
 
 .header-github:hover {
   background: rgba(255, 255, 255, 0.13);
+}
+
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at 76% 2%, rgba(142, 81, 177, 0.13), transparent 28rem),
+    var(--paper);
+}
+
+:root[data-theme="light"] .site-header {
+  background: rgba(255, 252, 255, 0.82);
+  box-shadow: 0 14px 50px rgba(62, 36, 73, 0.12);
+}
+
+:root[data-theme="light"] .desktop-nav {
+  color: #665c6a;
+}
+
+:root[data-theme="light"] .language-toggle,
+:root[data-theme="light"] .theme-toggle {
+  background: rgba(72, 42, 83, 0.045);
+}
+
+:root[data-theme="light"] .language-toggle span {
+  color: #746879;
+}
+
+:root[data-theme="light"] .language-toggle span.active {
+  background: var(--lavender);
+  color: #fff;
+}
+
+:root[data-theme="light"] .header-github {
+  background: rgba(72, 42, 83, 0.08);
+}
+
+:root[data-theme="light"] .header-github:hover,
+:root[data-theme="light"] .theme-toggle:hover {
+  background: rgba(72, 42, 83, 0.13);
+}
+
+:root[data-theme="light"] .hero-description,
+:root[data-theme="light"] .hero-note,
+:root[data-theme="light"] .floating-card small,
+:root[data-theme="light"] .gallery-nav button,
+:root[data-theme="light"] .trust-stats span,
+:root[data-theme="light"] .site-footer {
+  color: var(--muted);
+}
+
+:root[data-theme="light"] .button-ghost {
+  background: rgba(72, 42, 83, 0.04);
+}
+
+:root[data-theme="light"] .button-ghost:hover {
+  border-color: rgba(72, 42, 83, 0.24);
+  background: rgba(72, 42, 83, 0.08);
+}
+
+:root[data-theme="light"] .floating-card {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 18px 45px rgba(62, 36, 73, 0.16);
+}
+
+:root[data-theme="light"] .ticker {
+  background: #f1e9f5;
+}
+
+:root[data-theme="light"] .ticker-track span {
+  color: #6c6170;
+}
+
+:root[data-theme="light"] .media-tabs button {
+  color: #756a79;
+}
+
+:root[data-theme="light"] .media-tabs button.active {
+  color: #fff;
+}
+
+:root[data-theme="light"] .feature-card-2,
+:root[data-theme="light"] .feature-card-3 {
+  background: var(--panel);
+}
+
+:root[data-theme="light"] .gallery-section {
+  background:
+    radial-gradient(circle at 65% 40%, rgba(128, 73, 160, 0.12), transparent 35rem),
+    var(--paper-soft);
+}
+
+:root[data-theme="light"] .gallery-nav button.active {
+  color: var(--lavender);
+}
+
+:root[data-theme="light"] .footer-brand strong {
+  color: var(--ink);
 }
 
 .hero {
