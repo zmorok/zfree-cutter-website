@@ -25,7 +25,7 @@ const copy = {
       titleA: "Обрежь лишнее.",
       titleB: "Оставь момент.",
       text: "Открой видео, фото или GIF, внеси нужные правки и сохрани результат. Всё происходит прямо на телефоне — понятно и без лишних шагов.",
-      download: "Скачать v0.5.2",
+      download: "Скачать v0.5.3",
       source: "Открыть код",
       note: "Бесплатно · Open source · без подписки",
       local: "Обработка на устройстве",
@@ -54,7 +54,7 @@ const copy = {
         label: "GIF",
         title: "Работа с анимацией без обходных путей",
         text: "Просматривай GIF прямо в редакторе, применяй кадрирование и эффекты ко всей анимации или конвертируй её в видео.",
-        points: ["GIF ↔ MP4", "Точный размер результата", "Alpha-канал без потерь"],
+        points: ["Быстрый покадровый preview", "GIF ↔ MP4", "Alpha-канал без потерь"],
       },
     },
     gallery: {
@@ -64,7 +64,7 @@ const copy = {
       names: ["Главная", "Медиатека", "Онлайн-медиа", "Редактор", "Эффекты", "Экспорт", "Настройки"],
     },
     final: {
-      eyebrow: "Версия 0.5.2 · Android 10+",
+      eyebrow: "Версия 0.5.3 · Android 10+",
       title: "Медиа уже на телефоне. Редактор тоже может быть там.",
       download: "Скачать APK",
       changelog: "Что нового",
@@ -91,7 +91,7 @@ const copy = {
       titleA: "Cut the noise.",
       titleB: "Keep the moment.",
       text: "Open a video, photo, or GIF, make the changes you need, and save the result. Everything happens right on your phone, without unnecessary steps.",
-      download: "Download v0.5.2",
+      download: "Download v0.5.3",
       source: "View source",
       note: "Free · Open source · no subscription",
       local: "On-device processing",
@@ -120,7 +120,7 @@ const copy = {
         label: "GIF",
         title: "Edit animation without workarounds",
         text: "Preview GIFs in the editor, apply crop and effects to the whole animation, or convert it into a video.",
-        points: ["GIF ↔ MP4", "Exact output dimensions", "Lossless alpha preservation"],
+        points: ["Responsive frame preview", "GIF ↔ MP4", "Lossless alpha preservation"],
       },
     },
     gallery: {
@@ -130,7 +130,7 @@ const copy = {
       names: ["Home", "Library", "Online media", "Editor", "Effects", "Export", "Settings"],
     },
     final: {
-      eyebrow: "Version 0.5.2 · Android 10+",
+      eyebrow: "Version 0.5.3 · Android 10+",
       title: "Your media lives on your phone. Your editor can too.",
       download: "Download APK",
       changelog: "What’s new",
@@ -402,7 +402,7 @@ export default function Home() {
             <p className="final-note">{t.final.note}</p>
             <div className="final-links">
               <a href={`${REPOSITORY_URL}/issues`} target="_blank" rel="noreferrer">{t.final.issues}</a>
-              <a href={`${REPOSITORY_URL}/releases/tag/v0.5.2`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
+              <a href={`${REPOSITORY_URL}/releases/tag/v0.5.3`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
             </div>
           </div>
           <div className="final-mark" aria-hidden="true">

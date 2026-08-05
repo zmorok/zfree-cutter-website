@@ -9,13 +9,13 @@ test("exports the ZFree Cutter landing page", async () => {
   assert.match(html, /Обрежь лишнее/);
   assert.match(html, /Один редактор для видео, фото и GIF/);
   assert.match(html, /Так выглядит ZFree Cutter/);
-  assert.match(html, /Скачать v0\.5\.2/);
+  assert.match(html, /Скачать v0\.5\.3/);
   assert.match(html, /Включить светлую тему/);
   assert.match(html, /Онлайн-медиа/);
   assert.match(html, /Проверить исходный код/);
   assert.match(html, /Сообщить о проблеме/);
   assert.match(html, /github\.com\/zmorok\/zfree-cutter/);
-  assert.match(html, /releases\/tag\/v0\.5\.2/);
+  assert.match(html, /releases\/tag\/v0\.5\.3/);
   assert.doesNotMatch(
     html,
     /Живой мини‑редактор|Сделано для реальной работы|Твои файлы остаются твоими/,
