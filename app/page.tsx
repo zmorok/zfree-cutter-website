@@ -25,7 +25,7 @@ const copy = {
       titleA: "Обрежь лишнее.",
       titleB: "Оставь момент.",
       text: "Открой видео, фото или GIF, внеси нужные правки и сохрани результат. Всё происходит прямо на телефоне — понятно и без лишних шагов.",
-      download: "Скачать v0.5.3",
+      download: "Скачать v0.5.4",
       source: "Открыть код",
       note: "Бесплатно · Open source · без подписки",
       local: "Обработка на устройстве",
@@ -64,7 +64,7 @@ const copy = {
       names: ["Главная", "Медиатека", "Онлайн-медиа", "Редактор", "Эффекты", "Экспорт", "Настройки"],
     },
     final: {
-      eyebrow: "Версия 0.5.3 · Android 10+",
+      eyebrow: "Версия 0.5.4 · Android 10+",
       title: "Медиа уже на телефоне. Редактор тоже может быть там.",
       download: "Скачать APK",
       changelog: "Что нового",
@@ -91,7 +91,7 @@ const copy = {
       titleA: "Cut the noise.",
       titleB: "Keep the moment.",
       text: "Open a video, photo, or GIF, make the changes you need, and save the result. Everything happens right on your phone, without unnecessary steps.",
-      download: "Download v0.5.3",
+      download: "Download v0.5.4",
       source: "View source",
       note: "Free · Open source · no subscription",
       local: "On-device processing",
@@ -130,7 +130,7 @@ const copy = {
       names: ["Home", "Library", "Online media", "Editor", "Effects", "Export", "Settings"],
     },
     final: {
-      eyebrow: "Version 0.5.3 · Android 10+",
+      eyebrow: "Version 0.5.4 · Android 10+",
       title: "Your media lives on your phone. Your editor can too.",
       download: "Download APK",
       changelog: "What’s new",
@@ -152,7 +152,7 @@ function asset(path: string) {
 }
 
 export default function Home() {
-  const [locale, setLocale] = useState<Locale>("ru");
+  const [locale, setLocale] = useState<Locale>("en");
   const [theme, setTheme] = useState<Theme>("dark");
   const [media, setMedia] = useState<MediaKind>("video");
   const [shot, setShot] = useState(2);
@@ -167,6 +167,14 @@ export default function Home() {
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem("zfree-theme");
+    const requestedLocale = new URLSearchParams(window.location.search).get("lang");
+    const storedLocale = window.localStorage.getItem("zfree-locale");
+    const initialLocale: Locale =
+      requestedLocale === "ru" || requestedLocale === "en"
+        ? requestedLocale
+        : storedLocale === "ru" || storedLocale === "en"
+          ? storedLocale
+          : "en";
     const initialTheme: Theme =
       storedTheme === "light" || storedTheme === "dark"
         ? storedTheme
@@ -175,6 +183,7 @@ export default function Home() {
           : "dark";
     const frame = window.requestAnimationFrame(() => {
       setTheme(initialTheme);
+      setLocale(initialLocale);
       document.documentElement.dataset.theme = initialTheme;
     });
     return () => window.cancelAnimationFrame(frame);
@@ -182,6 +191,20 @@ export default function Home() {
 
   useEffect(() => {
     document.documentElement.lang = locale;
+    window.localStorage.setItem("zfree-locale", locale);
+    const metadataFrame = window.requestAnimationFrame(() => {
+      document.title =
+        locale === "ru"
+          ? "ZFree Cutter — медиаредактор для Android"
+          : "ZFree Cutter — media editor for Android";
+      const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+      if (description) {
+        description.content =
+          locale === "ru"
+            ? "ZFree Cutter 0.5.4 — открытый Android-редактор видео, фото и GIF с обрезкой таймлайна, быстрой конвертацией и онлайн-медиа."
+            : "ZFree Cutter 0.5.4 is an open-source Android editor for video, photos, and GIFs with timeline trimming, faster conversion, and online media.";
+      }
+    });
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -195,7 +218,10 @@ export default function Home() {
       { threshold: 0.14 },
     );
     revealElements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
+    return () => {
+      window.cancelAnimationFrame(metadataFrame);
+      observer.disconnect();
+    };
   }, [locale]);
 
   function handleHeroPointer(event: PointerEvent<HTMLDivElement>) {
@@ -219,6 +245,18 @@ export default function Home() {
     setTheme(nextTheme);
     document.documentElement.dataset.theme = nextTheme;
     window.localStorage.setItem("zfree-theme", nextTheme);
+  }
+
+  function toggleLocale() {
+    const nextLocale: Locale = locale === "ru" ? "en" : "ru";
+    setLocale(nextLocale);
+    const url = new URL(window.location.href);
+    if (nextLocale === "ru") {
+      url.searchParams.set("lang", "ru");
+    } else {
+      url.searchParams.delete("lang");
+    }
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
   }
 
   return (
@@ -245,7 +283,7 @@ export default function Home() {
           <button
             className="language-toggle"
             type="button"
-            onClick={() => setLocale(locale === "ru" ? "en" : "ru")}
+            onClick={toggleLocale}
             aria-label={locale === "ru" ? "Switch to English" : "Переключить на русский"}
           >
             <span className={locale === "ru" ? "active" : ""}>RU</span>
@@ -402,7 +440,7 @@ export default function Home() {
             <p className="final-note">{t.final.note}</p>
             <div className="final-links">
               <a href={`${REPOSITORY_URL}/issues`} target="_blank" rel="noreferrer">{t.final.issues}</a>
-              <a href={`${REPOSITORY_URL}/releases/tag/v0.5.3`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
+              <a href={`${REPOSITORY_URL}/releases/tag/v0.5.4`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
             </div>
           </div>
           <div className="final-mark" aria-hidden="true">

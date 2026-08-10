@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "ZFree Cutter — media editor for Android",
   description:
-    "ZFree Cutter 0.5.3 is an open-source Android editor for video, photos, and GIFs with responsive GIF editing, persistent editor state, and on-device export.",
+    "ZFree Cutter 0.5.4 is an open-source Android editor for video, photos, and GIFs with timeline trimming, faster conversion, online media search, and on-device export.",
   applicationName: "ZFree Cutter",
   authors: [{ name: "zmorok", url: "https://github.com/zmorok" }],
   keywords: ["Android", "video editor", "photo editor", "GIF editor", "open source", "Kotlin"],
@@ -27,9 +27,17 @@ export const metadata: Metadata = {
     shortcut: "/app-icon.svg",
     apple: "/app-icon.svg",
   },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      en: siteUrl,
+      ru: `${siteUrl}/?lang=ru`,
+      "x-default": siteUrl,
+    },
+  },
   openGraph: {
     title: "ZFree Cutter — Cut the noise. Keep the moment.",
-    description: "Version 0.5.3 of the open-source media editor for Android.",
+    description: "Version 0.5.4 of the open-source media editor for Android.",
     url: siteUrl,
     siteName: "ZFree Cutter",
     locale: "en_US",
@@ -74,7 +82,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
