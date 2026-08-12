@@ -10,14 +10,14 @@ test("exports the ZFree Cutter landing page", async () => {
   assert.match(html, /Cut the noise/);
   assert.match(html, /One editor for video, photos, and GIFs/);
   assert.match(html, /This is ZFree Cutter/);
-  assert.match(html, /Download v0\.5\.5/);
-  assert.match(html, /shows actual dimensions and sorts by resolution/);
+  assert.match(html, /Download v0\.5\.6/);
+  assert.match(html, /new Telegram target creates compact silent MP4 animations/);
   assert.match(html, /Switch to light theme/);
   assert.match(html, /Online media/);
   assert.match(html, /Inspect the source/);
   assert.match(html, /Report an issue/);
   assert.match(html, /github\.com\/zmorok\/zfree-cutter/);
-  assert.match(html, /releases\/tag\/v0\.5\.5/);
+  assert.match(html, /releases\/tag\/v0\.5\.6/);
   assert.doesNotMatch(
     html,
     /Живой мини‑редактор|Сделано для реальной работы|Твои файлы остаются твоими/,
