@@ -25,7 +25,7 @@ const copy = {
       titleA: "Обрежь лишнее.",
       titleB: "Оставь момент.",
       text: "Открой видео, фото или GIF, внеси нужные правки и сохрани результат. Всё происходит прямо на телефоне — понятно и без лишних шагов.",
-      download: "Скачать v0.6.0",
+      download: "Скачать v0.6.1",
       source: "Открыть код",
       note: "Бесплатно · Open source · без подписки",
       local: "Обработка на устройстве",
@@ -35,7 +35,7 @@ const copy = {
     intro: {
       kicker: "Всё в одном месте",
       title: "Один редактор для видео, фото и GIF.",
-      text: "Выбери файл на устройстве или найди медиа с открытой лицензией в онлайн-каталоге. Локальная медиатека показывает фактические размеры, а новый режим Telegram создаёт компактные беззвучные MP4-анимации.",
+      text: "Выбери файл на устройстве или найди медиа с открытой лицензией в онлайн-каталоге. Локальная медиатека показывает фактические размеры, а поиск и избранное теперь используют единую раскрываемую шапку.",
     },
     media: {
       video: {
@@ -64,7 +64,7 @@ const copy = {
       names: ["Главная", "Медиатека", "Онлайн-медиа", "Редактор", "Эффекты", "Экспорт", "Настройки"],
     },
     final: {
-      eyebrow: "Версия 0.6.0 · Android 10+",
+      eyebrow: "Версия 0.6.1 · Android 10+",
       title: "Медиа уже на телефоне. Редактор тоже может быть там.",
       download: "Скачать APK",
       changelog: "Что нового",
@@ -91,7 +91,7 @@ const copy = {
       titleA: "Cut the noise.",
       titleB: "Keep the moment.",
       text: "Open a video, photo, or GIF, make the changes you need, and save the result. Everything happens right on your phone, without unnecessary steps.",
-      download: "Download v0.6.0",
+      download: "Download v0.6.1",
       source: "View source",
       note: "Free · Open source · no subscription",
       local: "On-device processing",
@@ -101,7 +101,7 @@ const copy = {
     intro: {
       kicker: "Everything in one place",
       title: "One editor for video, photos, and GIFs.",
-      text: "Choose a file on your device or find openly licensed media in the online catalog. The local library shows actual dimensions, while the new Telegram target creates compact silent MP4 animations.",
+      text: "Choose a file on your device or find openly licensed media in the online catalog. The local library shows actual dimensions, while search and favorites now share one expandable header.",
     },
     media: {
       video: {
@@ -130,7 +130,7 @@ const copy = {
       names: ["Home", "Library", "Online media", "Editor", "Effects", "Export", "Settings"],
     },
     final: {
-      eyebrow: "Version 0.6.0 · Android 10+",
+      eyebrow: "Version 0.6.1 · Android 10+",
       title: "Your media lives on your phone. Your editor can too.",
       download: "Download APK",
       changelog: "What’s new",
@@ -201,8 +201,8 @@ export default function Home() {
       if (description) {
         description.content =
           locale === "ru"
-            ? "ZFree Cutter 0.6.0 — открытый Android-редактор видео, фото и GIF с интервальными эффектами, анимированным кадрированием и обработкой на устройстве."
-            : "ZFree Cutter 0.6.0 is an open-source Android editor for video, photos, and GIFs with timed effects, animated crop, and on-device processing.";
+            ? "ZFree Cutter 0.6.1 — открытый Android-редактор видео, фото и GIF с онлайн-медиа, Digital Noise Glitch и обработкой на устройстве."
+            : "ZFree Cutter 0.6.1 is an open-source Android editor for video, photos, and GIFs with online media, Digital Noise Glitch, and on-device processing.";
       }
     });
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
@@ -440,7 +440,7 @@ export default function Home() {
             <p className="final-note">{t.final.note}</p>
             <div className="final-links">
               <a href={`${REPOSITORY_URL}/issues`} target="_blank" rel="noreferrer">{t.final.issues}</a>
-              <a href={`${REPOSITORY_URL}/releases/tag/v0.6.0`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
+              <a href={`${REPOSITORY_URL}/releases/tag/v0.6.1`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
             </div>
           </div>
           <div className="final-mark" aria-hidden="true">

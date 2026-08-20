@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "ZFree Cutter — media editor for Android",
   description:
-    "ZFree Cutter 0.6.0 is an open-source Android editor for video, photos, and GIFs with timed effects, animated crop, and on-device export.",
+    "ZFree Cutter 0.6.1 is an open-source Android editor for video, photos, and GIFs with online media, Digital Noise Glitch, and on-device export.",
   applicationName: "ZFree Cutter",
   authors: [{ name: "zmorok", url: "https://github.com/zmorok" }],
   keywords: ["Android", "video editor", "photo editor", "GIF editor", "open source", "Kotlin"],
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "ZFree Cutter — Cut the noise. Keep the moment.",
-    description: "Version 0.6.0 of the open-source media editor for Android.",
+    description: "Version 0.6.1 of the open-source media editor for Android.",
     url: siteUrl,
     siteName: "ZFree Cutter",
     locale: "en_US",
