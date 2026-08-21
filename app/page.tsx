@@ -25,7 +25,7 @@ const copy = {
       titleA: "Обрежь лишнее.",
       titleB: "Оставь момент.",
       text: "Открой видео, фото или GIF, внеси нужные правки и сохрани результат. Всё происходит прямо на телефоне — понятно и без лишних шагов.",
-      download: "Скачать v0.6.1",
+      download: "Скачать v0.6.2",
       source: "Открыть код",
       note: "Бесплатно · Open source · без подписки",
       local: "Обработка на устройстве",
@@ -41,14 +41,14 @@ const copy = {
       video: {
         label: "Видео",
         title: "Всё нужное для короткого монтажа",
-        text: "Обрежь фрагмент, расставь эффекты по точным диапазонам и анимируй кадрирование ключевыми точками. Preview, кадр и экспорт используют один порядок.",
-        points: ["Диапазоны эффектов [начало, конец)", "Ключевые точки crop", "MP4 / H.264 / AAC"],
+        text: "Обрежь фрагмент, переходи на ±1 или ±5 секунд и анимируй кадрирование ключевыми точками. Preview и экспорт сохраняют выбранную геометрию без чёрных полос.",
+        points: ["Точные переходы ±1 / ±5 секунд", "Ключевые точки crop", "MP4 / H.264 / AAC"],
       },
       photo: {
         label: "Фото",
         title: "Быстрая правка фотографий",
-        text: "Кадрируй жестами или укажи точные размеры. Поворачивай, отражай и настраивай цвет без изменения исходного файла.",
-        points: ["JPEG / PNG / WebP", "Видимая прозрачность", "Исходник не изменяется"],
+        text: "Кадрируй жестами или укажи точные размеры. Сжатие уменьшает фото по пикселям или процентам и никогда не увеличивает исходник.",
+        points: ["Пиксели или проценты", "JPEG / PNG / WebP", "Исходник не изменяется"],
       },
       gif: {
         label: "GIF",
@@ -64,7 +64,7 @@ const copy = {
       names: ["Главная", "Медиатека", "Онлайн-медиа", "Редактор", "Эффекты", "Экспорт", "Настройки"],
     },
     final: {
-      eyebrow: "Версия 0.6.1 · Android 10+",
+      eyebrow: "Версия 0.6.2 · Android 10+",
       title: "Медиа уже на телефоне. Редактор тоже может быть там.",
       download: "Скачать APK",
       changelog: "Что нового",
@@ -91,7 +91,7 @@ const copy = {
       titleA: "Cut the noise.",
       titleB: "Keep the moment.",
       text: "Open a video, photo, or GIF, make the changes you need, and save the result. Everything happens right on your phone, without unnecessary steps.",
-      download: "Download v0.6.1",
+      download: "Download v0.6.2",
       source: "View source",
       note: "Free · Open source · no subscription",
       local: "On-device processing",
@@ -107,14 +107,14 @@ const copy = {
       video: {
         label: "Video",
         title: "Everything you need for a quick edit",
-        text: "Trim a clip, place effects on exact ranges, and animate crop with keyframes. Preview, frame capture, and export share one ordered model.",
-        points: ["Effect ranges [start, end)", "Animated crop keyframes", "MP4 / H.264 / AAC"],
+        text: "Trim a clip, jump by ±1 or ±5 seconds, and animate crop with keyframes. Preview and export preserve the selected geometry without black bars.",
+        points: ["Precise ±1 / ±5 second jumps", "Animated crop keyframes", "MP4 / H.264 / AAC"],
       },
       photo: {
         label: "Photo",
         title: "Fast photo adjustments",
-        text: "Crop by gesture or enter exact dimensions. Rotate, mirror, and adjust color without changing the source file.",
-        points: ["JPEG / PNG / WebP", "Visible transparency", "Source stays untouched"],
+        text: "Crop by gesture or enter exact dimensions. Compression downsizes photos by pixels or percent and never enlarges the source.",
+        points: ["Pixels or percent", "JPEG / PNG / WebP", "Source stays untouched"],
       },
       gif: {
         label: "GIF",
@@ -130,7 +130,7 @@ const copy = {
       names: ["Home", "Library", "Online media", "Editor", "Effects", "Export", "Settings"],
     },
     final: {
-      eyebrow: "Version 0.6.1 · Android 10+",
+      eyebrow: "Version 0.6.2 · Android 10+",
       title: "Your media lives on your phone. Your editor can too.",
       download: "Download APK",
       changelog: "What’s new",
@@ -201,8 +201,8 @@ export default function Home() {
       if (description) {
         description.content =
           locale === "ru"
-            ? "ZFree Cutter 0.6.1 — открытый Android-редактор видео, фото и GIF с онлайн-медиа, Digital Noise Glitch и обработкой на устройстве."
-            : "ZFree Cutter 0.6.1 is an open-source Android editor for video, photos, and GIFs with online media, Digital Noise Glitch, and on-device processing.";
+            ? "ZFree Cutter 0.6.2 — открытый Android-редактор видео, фото и GIF с точной навигацией видео, уменьшением фото и обработкой на устройстве."
+            : "ZFree Cutter 0.6.2 is an open-source Android editor for video, photos, and GIFs with precise video controls, bounded photo resizing, and on-device processing.";
       }
     });
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
@@ -440,7 +440,7 @@ export default function Home() {
             <p className="final-note">{t.final.note}</p>
             <div className="final-links">
               <a href={`${REPOSITORY_URL}/issues`} target="_blank" rel="noreferrer">{t.final.issues}</a>
-              <a href={`${REPOSITORY_URL}/releases/tag/v0.6.1`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
+              <a href={`${REPOSITORY_URL}/releases/tag/v0.6.2`} target="_blank" rel="noreferrer">{t.final.changelog}</a>
             </div>
           </div>
           <div className="final-mark" aria-hidden="true">
